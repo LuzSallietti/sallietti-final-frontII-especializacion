@@ -11,15 +11,16 @@ import {
   CotenedorTexto,
 } from '../styled';
 
-interface ModalContentProps {
+interface ContenidoProps {
   noticia: INoticiasNormalizadas;
   onSubscribe: () => void;
+  onClose: () => void;
 }
 
-const Contenido = ({ noticia, onSubscribe }: ModalContentProps) => {
+const ContenidoModal = ({ noticia, onSubscribe, onClose }: ContenidoProps) => {
   return (
     <TarjetaModal>
-      <CloseButton onClick={onSubscribe}>
+      <CloseButton onClick={onClose}>
         <img src={Close} alt="close-button" />
       </CloseButton>
       {noticia.esPremium ? (
@@ -46,4 +47,4 @@ const Contenido = ({ noticia, onSubscribe }: ModalContentProps) => {
   );
 };
 
-export default Contenido;
+export default ContenidoModal;

@@ -1,5 +1,5 @@
 import { ContenedorModal } from '../styled';
-import Contenido from './Contenido';
+import ContenidoModal from './ContenidoModal';
 import { INoticiasNormalizadas } from '../Noticias';
 
 interface ModalProps {
@@ -8,21 +8,26 @@ interface ModalProps {
 }
 /*Refactorización sigue el Principio de Responsabilidad única
 dividiendo la lógica de presentación del modal en un componente separado
-(ModalContent) y el componente principal (Modal) que maneja el estado y la lógica de suscripción.
+(Contenido) y el componente principal (Modal) que maneja el estado y la lógica de suscripción.
 Separa las responsabilidades en dos componentes.*/
 
 const Modal = ({ noticia, setModal }: ModalProps) => {
-  const handleClick = () => {
+  const handleSubscription = () => {
     setTimeout(() => {
       alert('¡Suscripto!');
       setModal(null);
     }, 1000);
   };
- 
+
+  const handleClose = () => {
+    setModal(null);
+  };
+  
+  
 
   return (
     <ContenedorModal>
-      <Contenido noticia={noticia} onSubscribe={handleClick} />
+      <ContenidoModal noticia={noticia} onSubscribe={handleSubscription} onClose={handleClose} />
     </ContenedorModal>
   );
 };

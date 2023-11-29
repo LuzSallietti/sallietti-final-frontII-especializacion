@@ -1,8 +1,8 @@
 import {render, screen, fireEvent, waitFor} from "../../test-utils";
 import Cita from "./Cita";
 
-describe("Pruebas en App", () => {
-	test("Debe verificar que la cita sea del personaje ingresado", async () => {
+describe("Pruebas en Cita", () => {
+	test("Verificar que la cita sea del personaje ingresado", async () => {
 		render(<Cita />);
 
 		const input = screen.getByPlaceholderText(/Ingresa el nombre del autor/i);
@@ -17,20 +17,16 @@ describe("Pruebas en App", () => {
 
   });
   
-  test('Obtener cita aleatoria', async() => {
+  test('Obtener una cita aleatoria', async() => {
     render(<Cita />);
 
     const boton = await screen.findByText(/Obtener Cita/i);
-    fireEvent.click(boton);
+    fireEvent.click(boton);   
     
-    // Esperar por un intervalo de tiempo con una promesa
-    // await Promise.resolve(setTimeout(resolve, 3000));
 
     await waitFor(() => {
       expect(screen.getByText(/Homer Simpson/i)).toBeInTheDocument()
     });
-
-    screen.debug();
   
   })
 
@@ -68,7 +64,7 @@ test('Limpiar input con el botón Borrar', () => {
   expect(input).toHaveValue('');
 });
 
-test('Borrar contenido del input y de la cita con el botón Borrar', () => {
+test('Borrar la cita con el botón Borrar', () => {
   render(<Cita />);
   const input= screen.getByPlaceholderText(/Ingresa el nombre del autor/i);
   const mensaje = screen.getByText(/No se encontro ninguna cita/i);
