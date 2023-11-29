@@ -1,12 +1,8 @@
 import React from 'react'
-import { INoticiasNormalizadas } from '../Noticias'
+import { ListaProps } from '../types/lista.type';
 import { ListaNoticias } from '../styled';
 
 
-interface ListaProps {
-    noticias : INoticiasNormalizadas []
-    render: (noticia: INoticiasNormalizadas ) => React.ReactNode;     
-}
 
 const Lista = ({ noticias, render }: ListaProps) => {
 

@@ -1,30 +1,29 @@
+import { useContext } from 'react';
 import { ContenedorModal } from '../styled';
 import ContenidoModal from './ContenidoModal';
-import { INoticiasNormalizadas } from '../Noticias';
+import { INoticiasNormalizadas } from '../types/noticia.type';
+import { NoticiasContext } from '../context/NoticiasContext';
 
-interface ModalProps {
-  noticia: INoticiasNormalizadas;
-  setModal: (noticia: INoticiasNormalizadas | null) => void;
-}
 /*Refactorización sigue el Principio de Responsabilidad única
 dividiendo la lógica de presentación del modal en un componente separado
 (Contenido) y el componente principal (Modal) que maneja el estado y la lógica de suscripción.
 Separa las responsabilidades en dos componentes.*/
 
-const Modal = ({ noticia, setModal }: ModalProps) => {
+const Modal:React.FC<{ noticia: INoticiasNormalizadas }>= ({ noticia }) => {
+  
+  const {toggleModal} = useContext(NoticiasContext)
+
   const handleSubscription = () => {
     setTimeout(() => {
       alert('¡Suscripto!');
-      setModal(null);
+      toggleModal(null);
     }, 1000);
   };
 
   const handleClose = () => {
-    setModal(null);
+    toggleModal(null);
   };
-  
-  
-
+   
   return (
     <ContenedorModal>
       <ContenidoModal noticia={noticia} onSubscribe={handleSubscription} onClose={handleClose} />

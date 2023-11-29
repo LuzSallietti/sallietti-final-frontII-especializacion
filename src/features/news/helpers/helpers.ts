@@ -1,5 +1,4 @@
-import { INoticias } from "../fakeRest";
-import { INoticiasNormalizadas } from "../Noticias";
+import { INoticiasNormalizadas, INoticias } from "../types/noticia.type";
 import { obtenerNoticias } from "../fakeRest";
 
 

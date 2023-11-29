@@ -1,6 +1,6 @@
 import React from 'react';
 import { SuscribeImage, CloseButton as Close } from '../../../assets';
-import { INoticiasNormalizadas } from '../Noticias';
+import { ModalProps } from '../types/modal.type';
 import {
   CloseButton,
   TarjetaModal,
@@ -11,13 +11,7 @@ import {
   CotenedorTexto,
 } from '../styled';
 
-interface ContenidoProps {
-  noticia: INoticiasNormalizadas;
-  onSubscribe: () => void;
-  onClose: () => void;
-}
-
-const ContenidoModal = ({ noticia, onSubscribe, onClose }: ContenidoProps) => {
+const ContenidoModal = ({ noticia, onSubscribe, onClose }: ModalProps ) => {
   return (
     <TarjetaModal>
       <CloseButton onClick={onClose}>

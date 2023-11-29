@@ -1,13 +1,11 @@
-import React from 'react'
+import { useContext } from 'react';
 import { TarjetaNoticia, ImagenTarjetaNoticia, TituloTarjetaNoticia, FechaTarjetaNoticia, DescripcionTarjetaNoticia, BotonLectura } from '../styled'
-import { INoticiasNormalizadas } from '../Noticias'
+import { INoticiasNormalizadas } from '../types/noticia.type'
+import { NoticiasContext } from '../context/NoticiasContext';
 
-interface TarjetaProps {
-    noticia: INoticiasNormalizadas; 
-    setModal: (noticia: INoticiasNormalizadas | null) => void;
-  }
 
-const Tarjeta = ({ noticia, setModal }: TarjetaProps) => {
+const Tarjeta :React.FC<{ noticia: INoticiasNormalizadas }>= ({ noticia }) => {
+  const {toggleModal} = useContext(NoticiasContext)
   return (
     <li>
         <TarjetaNoticia>
@@ -17,7 +15,7 @@ const Tarjeta = ({ noticia, setModal }: TarjetaProps) => {
             <DescripcionTarjetaNoticia>
                 {noticia.descripcionCorta}
             </DescripcionTarjetaNoticia>
-            <BotonLectura onClick={() => setModal(noticia)}>Ver más</BotonLectura>
+            <BotonLectura onClick={() => toggleModal(noticia)}>Ver más</BotonLectura>
         </TarjetaNoticia>
     </li>
   )

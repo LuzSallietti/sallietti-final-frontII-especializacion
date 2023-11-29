@@ -1,11 +1,4 @@
-export interface INoticias {
-  id: number;
-  titulo: string;
-  descripcion: string;
-  fecha: Date;
-  esPremium: boolean;
-  imagen: string;
-}
+import { INoticias } from "./types/noticia.type";
 
 const simularTiempoTranscurrido: (decrementMiliseconds: number) => Date = (
   decrementMiliseconds
